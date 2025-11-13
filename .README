@@ -1,0 +1,36 @@
+Using the data found on this url https://www.kaggle.com/datasets/rounakbanik/pokemon, create a database called assignment 3.
+
+ 
+
+Then create a table called pokemon which has:
+
+id - integer - identity field - primary key - not null
+
+description - character varying - 30 long - not null
+
+base_total - integer - not null
+
+ 
+
+Add the following records to the table:
+
+Bulbasaur, 318
+
+Ivysaur, 405
+
+Charizard, 634
+
+Venusaur, 625
+
+Squirtle, 314
+
+ 
+
+Create a web page that shows all of the data from the table in order of pokemon name. There should also be a form that contains an input allowing the user to enter the name of the pokemon and a submit button. When the button is clicked, the form is sent to a route called searchPokemon. That route will find the character in the table and return the name and the base_total to a new view and display that info.
+ 
+
+Try to make it look professional.
+
+ 
+
+Submit a video with you explaining your project and the code.

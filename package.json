@@ -1,0 +1,22 @@
+{
+  "name": "skillcheck3",
+  "version": "1.0.0",
+  "description": "pokemon app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "conlad",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "knex": "^3.1.0",
+    "path": "^0.12.7",
+    "pg": "^8.16.3",
+    "session": "^0.1.0"
+  }
+}
