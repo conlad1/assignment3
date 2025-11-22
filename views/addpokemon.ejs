@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Pokemon</title>
+    <!-- Bootstrap 5 CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-black">
+    <div class="container mt-5">
+        <!-- Form to add a new pokemon -->
+        <h3 class="text-warning">Add a Pokemon</h3>
+        <form action="/pokemon/add" method="POST">
+            <!-- Dropdown to select pokemon name from pokedex -->
+            <div class="mb-3">
+                <label class="form-label text-info" for="pokemon_name">Pokemon Name</label>
+                <select class="form-control" id="pokemon_name" name="pokemon_name" required>
+                    <option value="">Select a pokemon...</option>
+                    <!-- Populate dropdown with pokemon names from pokedex -->
+                    <% pokedexEntries.forEach(pokemon => { %>
+                        <option value="<%= pokemon.name %>"><%= pokemon.name %></option>
+                    <% }); %>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-info" for="description">Description</label>
+                <input class="form-control" type="text" id="description" name="description" maxlength="30" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-info" for="base_total">Base Total</label>
+                <input class="form-control" type="number" id="base_total" name="base_total" required>
+            </div>
+            <!-- Trainer selection - different for admins vs regular users -->
+            <% if (session.level === 'm') { %>
+                <!-- Admin can select any trainer from dropdown -->
+                <div class="mb-3">
+                    <label class="form-label text-info" for="trainer">Trainer</label>
+                    <select class="form-control" id="trainer" name="trainer" required>
+                        <option value="">Select a trainer...</option>
+                        <!-- Populate dropdown with all trainers -->
+                        <% trainers.forEach(trainer => { %>
+                            <option value="<%= trainer.username %>"><%= trainer.username %></option>
+                        <% }); %>
+                    </select>
+                </div>
+            <% } else { %>
+                <!-- Regular user can only add pokemon for themselves (read-only field) -->
+                <div class="mb-3">
+                    <label class="form-label text-info" for="trainer">Trainer</label>
+                    <input class="form-control" type="text" id="trainer" name="trainer" value="<%= session.username %>" readonly>
+                </div>
+            <% } %>
+            <div class="mb-3">
+                <button class="btn btn-danger" type="submit">Add Pokemon</button>
+            </div>
+        </form>
+        <br>
+        <a href="/" class="btn btn-primary">Back to Pokemon List</a>
+    </div>
+</body>
+</html>
+
