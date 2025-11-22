@@ -48,10 +48,10 @@ const knex = require("knex")({
     client: "pg",
     connection: {
         host: process.env.RDS_HOSTNAME || process.env.DB_HOST || "localhost",
-        user: process.env.RDS_HOSTNAME || process.env.DB_USER || "postgres",
-        password: process.env.RDS_HOSTNAME || process.env.DB_PASSWORD || "admin",
-        database: process.env.RDS_HOSTNAME || process.env.DB_NAME || "assignment3",
-        port: process.env.RDS_HOSTNAME || process.env.DB_PORT || 5434,
+        user: process.env.RDS_USER || process.env.DB_USER || "postgres",
+        password: process.env.RDS_PASSWORD || process.env.DB_PASSWORD || "admin",
+        database: process.env.RDS_DB_NAME || process.env.DB_NAME || "assignment3",
+        port: process.env.RDS_PORT || process.env.DB_PORT || 5434,
 
         ssl: process.env.DB_SSL ? {rejectUnauthorized: false} : false
     }
